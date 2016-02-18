@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Cody/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-eb7cba6fb67852536615c188edea3807cb9bad55.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2-7f6f3f1451f59b6e5993536afe6d1ec6234e6862.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.0/c0af904657634f7ab9cc21e75d80250570033321/firebase-client-jvm-2.5.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c0af904657634f7ab9cc21e75d80250570033321">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.5.0-2b13b00d0252df6c4b66c1f5137a38ecf9705b96.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-47318fcf19b8f0e6649a65e24439d85ec7af4f07.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.0/7d0473896b3b10b23a2f9812fec4316dff8afdd/firebase-client-android-2.5.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="07d0473896b3b10b23a2f9812fec4316dff8afdd">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.5.0-22ab3625e721d25ce32748089b62b3aa1512c60a.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-8b098917da3df606a3afd076a8c0325f24905333.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2-11d32b29d5e14ca08f2a8c7d3e65562bdb49a1a3.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2-89ac04178b9c5f6ab9ca09d18e2a987735090957.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-206a744798ad29c588cf0191cc61833bb71f4202.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-9d22e6d427ed2a3828062efccd2d2f797115fe8a.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/tubesock-0.0.12-9d989673df578fc1b0df2f02be4497b926c65e92.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-7cb3bee4eadc23038c3b235bd71e6859f5fb094d.jar" />
+    </item>
+
+</items>
