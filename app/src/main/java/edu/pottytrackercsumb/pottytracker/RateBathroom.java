@@ -1,11 +1,13 @@
 package edu.pottytrackercsumb.pottytracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -28,7 +30,7 @@ public class RateBathroom extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         firebaseRef = new Firebase(FIREBASE_URL);
 
-        EditText inputText = (EditText) findViewById(R.id.messageText);
+        EditText inputText = (EditText) findViewById(R.id.comments);
         inputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -39,7 +41,16 @@ public class RateBathroom extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+        Button update = (Button) findViewById(R.id.cancelBttn);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RateBathroom.this, HomePage.class);
+                startActivity(i);
+            }
+        });
+
+        findViewById(R.id.enterBttn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendMessage();
@@ -48,7 +59,7 @@ public class RateBathroom extends AppCompatActivity {
     }
 
     public void sendMessage(){
-        EditText textInput = (EditText) findViewById(R.id.messageText);
+        EditText textInput = (EditText) findViewById(R.id.comments);
         String message = textInput.getText().toString();
         if(!message.equals("")) {
             Random rand = new Random();
