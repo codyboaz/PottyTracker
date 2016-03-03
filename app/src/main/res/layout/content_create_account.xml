@@ -17,20 +17,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="75dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Username:"
+            android:text="First Name:"
             android:id="@+id/textView2"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/firstName"
             android:background="#ffffff"
             android:minHeight="35dp" />
 
@@ -47,14 +48,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Email:"
+            android:text="Last Name:"
             android:id="@+id/textView3"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
+            android:id="@+id/lastName"
             android:background="#ffffff"
             android:minHeight="35dp" />
     </LinearLayout>
@@ -65,21 +67,47 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Username"
+            android:id="@+id/textView4"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"
+            android:background="#ffffff"
+            android:minHeight="35dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Password"
-            android:id="@+id/textView4"
-            android:layout_marginRight="10dp" />
+            android:id="@+id/textView6"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText3"
+            android:id="@+id/password"
             android:background="#ffffff"
-            android:minHeight="35dp" />
+            android:minHeight="35dp"
+            android:password="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,16 +121,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Re-enter Password"
+            android:text="Confirm Password"
             android:id="@+id/textView5"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText4"
+            android:id="@+id/rePassword"
             android:background="#ffffff"
-            android:minHeight="35dp" />
+            android:minHeight="35dp"
+            android:password="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -117,10 +147,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create"
-            android:id="@+id/Createbutton"
+            android:id="@+id/createBttn"
             android:layout_marginRight="20dp"
             android:minWidth="100dp"
-            android:background="#cbf3e8" />
+            android:background="#cbf3e8"
+            android:textStyle="italic" />
 
         <Button
             android:layout_width="wrap_content"
@@ -128,7 +159,8 @@
             android:text="Cancel"
             android:id="@+id/cancelButton"
             android:minWidth="100dp"
-            android:background="#cbf3e8" />
+            android:background="#cbf3e8"
+            android:textStyle="italic" />
     </LinearLayout>
 
 </LinearLayout>
