@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-004417a7c97a8fb976611ddbd1a916df318b8e73.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-9d22e6d427ed2a3828062efccd2d2f797115fe8a.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-3b7d60f2e2739b7f1e220553837a67ec394c7b5e.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-dbb2d639e66c4d1f4be1a824aa0ce80d0d18316e.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-1da9d312274a1fa66fed08b365980d8d4eb6b9af.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-8b098917da3df606a3afd076a8c0325f24905333.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-af816bb895e04ae4d5e1ae77c3e589927affc688.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-4a77f6f9c9da54b27806924efc0b6acb8168f913.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-38c0dd93a437c9fbc6a97c4cecf342d7a79ff615.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-4b94cc0eabbf6df7c63f90212406a357731bb0ea.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-c3eccad3c53c5d48f5b858c954f80a16b23c533a.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-4706dcda455f25a0935f187067cce465116be54a.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-206a744798ad29c588cf0191cc61833bb71f4202.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-088fc7eff31ac85e73b0e0d9ed9fe2d131fd7cfa.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-eb7cba6fb67852536615c188edea3807cb9bad55.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-835dc0070dbc08f8ca91d6e648a675cbcc824bc4.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-351fd609ce10bd8974be6573b66fee2bb1a7e360.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-0cd7b7149d73eb5bc257f9701010b03749fb005c.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-47318fcf19b8f0e6649a65e24439d85ec7af4f07.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-4b04165ccafccd23d1bc8aae8ad89a7575780f84.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-c13d8326191b227cb07535cc0d5455cab372ba90.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-e69c5cb4f756c22a9cb6ed690f04ef99a903f524.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-be54cd9b3b41cf189abf04d2ed6c986db5822897.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-7b7c294fc62ce5c3c9fc3e743f00423bc2890d50.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-7cb3bee4eadc23038c3b235bd71e6859f5fb094d.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-7511f31df774d4d912376d488e7617e9337ed90f.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-8d299500f17ae48e5ad286549f0620c44455bde4.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-2409ae2cbafe2e34e725075029f923f88014aae3.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-ae6b85c70ab0a6982137410e769c2ebb586a5a5c.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
+        <dex dex="/Users/Cody/Documents/AndroidProgramming/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-fe3a761a8d458d66394149470257136294ebad5c.jar" />
+    </item>
+
+</items>

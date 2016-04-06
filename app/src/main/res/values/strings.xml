@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PottyTracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_rate_bathroom">RateBathroom</string>
+    <string name="title_activity_create_account">CreateAccount</string>
+    <string name="title_activity_find_bathroom">FindBathroom</string>
+    <string name="title_activity_update_bathroom">UpdateBathroom</string>
+    <string name="title_activity_your_ratings">YourRatings</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="empty_title"></string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/find_bathroom"
+            android:title="Find Bathroom" />
+        <item android:id="@+id/update_bathroom"
+            android:title="Update Bathroom" />
+        <item android:id="@+id/rate_bathroom"
+            android:title="Rate Bathroom" />
+        <item android:id="@+id/your_rating"
+            android:title="Your Ratings" />
+        <item android:id="@+id/logout"
+            android:title="Log Out" />
+    </group>
+
+
+</menu>
