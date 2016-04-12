@@ -19,9 +19,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -170,7 +167,6 @@ public class CreateAccount extends AppCompatActivity
 
     private class RestOperation extends AsyncTask<String, Void, Void> {
 
-        final HttpClient httpClient = new DefaultHttpClient();
         String content;
         String error;
         ProgressDialog progressDialog = new ProgressDialog(CreateAccount.this);

@@ -1,6 +1,7 @@
 package edu.pottytrackercsumb.pottytracker;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -37,16 +38,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class UpdateBathroom extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private boolean loggedIn = false;
 
-    EditText addressEditText, cityEditText, stateEditText;
+    EditText addressEditText, cityEditText, stateEditText, nameEditText;
 
     // Used to utilize map capabilities
     private GoogleMap map;
@@ -57,7 +63,11 @@ public class UpdateBathroom extends AppCompatActivity
     // Used to place Marker on my map
     Marker addressMarker;
 
+    private String Name;
+
     static final LatLng csumb = new LatLng(36.650945, -121.790773);
+
+    String lat, lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +94,6 @@ public class UpdateBathroom extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Initialize my EditTexts
-        addressEditText = (EditText) findViewById(R.id.addressEditText);
-        cityEditText = (EditText) findViewById(R.id.cityEditText);
-        stateEditText = (EditText) findViewById(R.id.stateEditText);
 
         // Initialize my Google Map
         try{
@@ -225,17 +231,35 @@ public class UpdateBathroom extends AppCompatActivity
     // Called when getAddressButton is clicked
     public void showAddressMarker(View view) {
 
+        // Initialize my EditTexts
+        addressEditText = (EditText) findViewById(R.id.addressEditText);
+        cityEditText = (EditText) findViewById(R.id.cityEditText);
+        stateEditText = (EditText) findViewById(R.id.stateEditText);
+        nameEditText = (EditText) findViewById(R.id.bathroomName);
+
         // Get the street address entered
 
-        String newAddress = addressEditText.getText().toString();
-        String newCity = cityEditText.getText().toString();
-        String newState = stateEditText.getText().toString();
+        String newAddress = addressEditText.getText().toString().trim();
+        String newCity = cityEditText.getText().toString().trim();
+        String newState = stateEditText.getText().toString().trim();
+        String newBathroom = nameEditText.getText().toString().trim();
 
 
-        if(!newAddress.isEmpty() && !newCity.isEmpty() && !newState.isEmpty()){
+        if(!newAddress.isEmpty() && !newCity.isEmpty() && !newState.isEmpty() && !newBathroom.isEmpty()){
 
             // Call for the AsyncTask to place a marker
-            new PlaceAMarker().execute(newAddress, newCity, newState);
+            new PlaceAMarker().execute(newAddress, newCity, newState, newBathroom);
+
+            newAddress = newAddress.replaceAll(" ","%20");
+            newCity = newCity.replaceAll(" ","%20");
+            newState = newState.replaceAll(" ","%20");
+            newBathroom = newBathroom.replaceAll(" ","%20");
+
+
+            String restURL = "http://codyboaz.com/PottyTracker/update_bathroom.php?name=" + newBathroom
+                    + "&city=" + newCity + "&state=" + newState + "&lng=" + lng + "&lat=" + lat
+                    + "&address=" + newAddress;
+            new RestOperation().execute(restURL);
 
         }
         else{
@@ -254,6 +278,7 @@ public class UpdateBathroom extends AppCompatActivity
             String Address = params[0];
             String City = params[1];
             String State = params[2];
+            Name = params[3];
 
             // Replace the spaces with %20
             Address = Address.replaceAll(" ","%20");
@@ -274,16 +299,11 @@ public class UpdateBathroom extends AppCompatActivity
             // Draw the marker on the screen
             addressMarker = map.addMarker(new MarkerOptions()
                     .position(addressPos)
-                    .title("Test")
-                    .snippet("test")
+                    .title(Name)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.bathroom2))
                     .anchor(0.0f, 1.0f));
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(
                     addressPos, 16));
-
-            addressEditText.setText("");
-            cityEditText.setText("");
-            stateEditText.setText("");
         }
 
     }
@@ -329,32 +349,113 @@ public class UpdateBathroom extends AppCompatActivity
             e.printStackTrace();
         }
 
-        double lat = 0.0, lng = 0.0;
-
         // Holds key value mappings
         JSONObject jsonObject;
         try {
             jsonObject = new JSONObject(stringBuilder.toString());
 
+
+
+
             // Get the returned latitude and longitude
             lng = ((JSONArray)jsonObject.get("results")).getJSONObject(0)
                     .getJSONObject("geometry").getJSONObject("location")
-                    .getDouble("lng");
+                    .getString("lng");
 
             lat = ((JSONArray)jsonObject.get("results")).getJSONObject(0)
                     .getJSONObject("geometry").getJSONObject("location")
-                    .getDouble("lat");
+                    .getString("lat");
 
             // Change the lat and long depending on if we want to set the
             // starting or ending destination
 
-                addressPos = new LatLng(lat, lng);
+            double Lat, Lng;
+
+            Lat = Double.parseDouble(lat);
+            Lng = Double.parseDouble(lng);
+
+            addressPos = new LatLng(Lat, Lng);
 
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private class RestOperation extends AsyncTask<String, Void, Void> {
+
+        String content;
+        String error;
+        ProgressDialog progressDialog = new ProgressDialog(UpdateBathroom.this);
+        String data = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog.setTitle("Please wait ...");
+            progressDialog.show();
+
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+            BufferedReader br = null;
+
+            URL url;
+            try {
+                url = new URL(params[0]);
+
+                URLConnection connection = url.openConnection();
+                connection.setDoOutput(true);
+
+
+                OutputStreamWriter outputStreamWr = new OutputStreamWriter(connection.getOutputStream());
+                outputStreamWr.write(data);
+                outputStreamWr.flush();
+
+                br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                while((line = br.readLine())!=null) {
+                    sb.append(line);
+                    sb.append(System.getProperty("line.separator"));
+                }
+
+                content = sb.toString();
+
+
+
+            } catch (MalformedURLException e) {
+                error = e.getMessage();
+                e.printStackTrace();
+            } catch (IOException e) {
+                error = e.getMessage();
+                e.printStackTrace();
+            } finally {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            Toast.makeText(getApplicationContext(), "Bathroom Created", Toast.LENGTH_LONG).show();
+            addressEditText.setText("");
+            cityEditText.setText("");
+            stateEditText.setText("");
+            nameEditText.setText("");
+
+        }
     }
 
 }

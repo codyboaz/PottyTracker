@@ -20,6 +20,16 @@
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_marginTop="75dp" />
 
+
+            <EditText
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/bathroomName"
+        android:hint="Bathroom Name"
+        android:layout_below="@+id/map"
+        android:layout_marginTop="15dp" />
     <EditText
         android:layout_width="215dp"
         android:layout_height="wrap_content"
@@ -27,8 +37,7 @@
         android:ems="10"
         android:id="@+id/addressEditText"
         android:hint="Street Address"
-        android:layout_below="@+id/map"
-        android:layout_marginTop="15dp" />
+        android:layout_below="@+id/map" />
     <EditText
         android:layout_width="215dp"
         android:layout_height="wrap_content"

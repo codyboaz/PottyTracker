@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,8 +21,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,10 +49,16 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private boolean loggedIn = false;
+    private CallbackManager callbackManager;
+    private String firstName;
+    private Profile profile;
+    private ProfileTracker mProfileTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -90,6 +106,57 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 String restURL = "http://codyboaz.com/PottyTracker/get_login.php?username=" + userinput.getText().toString().trim() + "&password=" + password.getText().toString().trim();
                 new RestOperation().execute(restURL);
+
+            }
+        });
+
+        // connect with facebook
+        LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
+        loginButton.setReadPermissions("user_friends");
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject me, GraphResponse response) {
+                                if (response.getError() != null) {
+                                    Toast.makeText(getApplicationContext(), "Incorrect username or password",
+                                            Toast.LENGTH_LONG).show();
+                                } else {
+                                    if(Profile.getCurrentProfile() == null) {
+                                        mProfileTracker = new ProfileTracker() {
+                                            @Override
+                                            protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
+                                                Log.v("facebook - profile", profile2.getFirstName());
+                                                mProfileTracker.stopTracking();
+                                            }
+                                        };
+                                        mProfileTracker.startTracking();
+                                    } else {
+                                        profile = Profile.getCurrentProfile();
+                                        firstName = profile.getName();
+                                        Intent myIntent = new Intent(MainActivity.this, HomePage.class);
+                                        myIntent.putExtra("first", firstName);
+                                        myIntent.putExtra("Username", "test");
+                                        startActivity(myIntent);
+                                        finish();
+                                    }
+                                }
+                            }
+                        }).executeAsync();
+
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException e) {
 
             }
         });
@@ -170,7 +237,6 @@ public class MainActivity extends AppCompatActivity
 
     private class RestOperation extends AsyncTask<String, Void, Void> {
 
-        final HttpClient httpClient = new DefaultHttpClient();
         String content;
         String error;
         ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
