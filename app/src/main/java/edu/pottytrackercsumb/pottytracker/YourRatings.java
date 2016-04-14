@@ -17,6 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+
 public class YourRatings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -26,6 +29,8 @@ public class YourRatings extends AppCompatActivity
         setContentView(R.layout.activity_your_ratings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -119,6 +124,9 @@ public class YourRatings extends AppCompatActivity
 
                             //Saving the sharedpreferences
                             editor.commit();
+
+                            LoginManager.getInstance().logOut();
+
 
                             //Starting login activity
                             Intent intent = new Intent(YourRatings.this, MainActivity.class);

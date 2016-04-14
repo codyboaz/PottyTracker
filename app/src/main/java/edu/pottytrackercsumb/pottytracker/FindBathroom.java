@@ -15,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -47,6 +49,9 @@ public class FindBathroom extends AppCompatActivity
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -155,6 +160,8 @@ public class FindBathroom extends AppCompatActivity
 
                             //Saving the sharedpreferences
                             editor.commit();
+
+                            LoginManager.getInstance().logOut();
 
                             //Starting login activity
                             Intent intent = new Intent(FindBathroom.this, MainActivity.class);

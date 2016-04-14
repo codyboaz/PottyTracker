@@ -53,15 +53,19 @@ public class MainActivity extends AppCompatActivity
     private String firstName;
     private Profile profile;
     private ProfileTracker mProfileTracker;
+    SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -84,14 +88,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Button map = (Button) findViewById(R.id.findBathroomBttn);
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, FindBathroom.class);
-                startActivity(i);
-            }
-        });
 
 
         final EditText userinput = (EditText) findViewById(R.id.username);
@@ -114,18 +110,22 @@ public class MainActivity extends AppCompatActivity
         LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");
 
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                loginResult.getAccessToken().getToken();
+
                 GraphRequest.newMeRequest(
                         loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+
                             @Override
                             public void onCompleted(JSONObject me, GraphResponse response) {
                                 if (response.getError() != null) {
-                                    Toast.makeText(getApplicationContext(), "Incorrect username or password",
-                                            Toast.LENGTH_LONG).show();
+                                    Log.e("test2", "Did i get here");
                                 } else {
                                     if(Profile.getCurrentProfile() == null) {
+                                        Log.e("test", "Did i get here 2");
                                         mProfileTracker = new ProfileTracker() {
                                             @Override
                                             protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
@@ -137,15 +137,31 @@ public class MainActivity extends AppCompatActivity
                                     } else {
                                         profile = Profile.getCurrentProfile();
                                         firstName = profile.getName();
-                                        Intent myIntent = new Intent(MainActivity.this, HomePage.class);
-                                        myIntent.putExtra("first", firstName);
-                                        myIntent.putExtra("Username", "test");
-                                        startActivity(myIntent);
-                                        finish();
+                                        Log.e("test", firstName);
+
+                                        //Creating editor to store values to shared preferences
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                        //Adding values to editor
+                                        editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
+                                        editor.putString(Config.NAME_SHARED_PREF, firstName);
+
+                                        //Saving values to editor
+                                        editor.commit();
                                     }
                                 }
+                                Intent intent = new Intent(MainActivity.this, HomePage.class);
+
+                                startActivity(intent);
                             }
+
+
                         }).executeAsync();
+
+
+
+
+
 
 
             }
@@ -164,6 +180,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         //In onresume fetching value from sharedpreference
@@ -171,6 +194,7 @@ public class MainActivity extends AppCompatActivity
 
         //Fetching the boolean value form sharedpreferences
         loggedIn = sharedPreferences.getBoolean(Config.LOGGEDIN_SHARED_PREF, false);
+
 
         //If we will get true
         if(loggedIn){
@@ -324,8 +348,6 @@ public class MainActivity extends AppCompatActivity
                     myIntent.putExtra("First Name", fName);
                     myIntent.putExtra("Last Name", lName);
 
-                    SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-
                     //Creating editor to store values to shared preferences
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -348,6 +370,8 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
+
+
 
 
 }

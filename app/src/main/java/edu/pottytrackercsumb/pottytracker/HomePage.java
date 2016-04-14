@@ -18,6 +18,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -31,6 +34,7 @@ public class HomePage extends AppCompatActivity
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -151,6 +155,8 @@ public class HomePage extends AppCompatActivity
 
                             //Saving the sharedpreferences
                             editor.commit();
+
+                            LoginManager.getInstance().logOut();
 
                             //Starting login activity
                             Intent intent = new Intent(HomePage.this, MainActivity.class);
