@@ -11,7 +11,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="@color/Backround">
 
     <fragment
         android:layout_width="match_parent"
@@ -29,12 +30,17 @@
         android:id="@+id/bathroomName"
         android:hint="Bathroom Name"
         android:layout_below="@+id/map"
+                android:textColorHint="@color/Gray"
+                android:background="@android:color/white"
         android:layout_marginTop="15dp" />
     <EditText
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:ems="10"
+
+        android:textColorHint="@color/Gray"
+        android:background="@android:color/white"
         android:id="@+id/addressEditText"
         android:hint="Street Address"
         android:layout_below="@+id/map" />
@@ -43,6 +49,8 @@
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:ems="10"
+        android:textColorHint="@color/Gray"
+        android:background="@android:color/white"
         android:id="@+id/cityEditText"
         android:hint="City" />
     <EditText
@@ -57,6 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Bathroom"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/GhostWhite"
         android:id="@+id/getAddressButton"
         android:onClick="showAddressMarker"
         android:layout_marginBottom="40dp" />

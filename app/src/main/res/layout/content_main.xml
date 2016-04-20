@@ -9,14 +9,15 @@
     android:background="@color/Backround"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main"
-    tools:context="edu.pottytrackercsumb.pottytracker.MainActivity">
+    tools:context="edu.pottytrackercsumb.pottytracker.MainActivity"
+    android:longClickable="false">
 
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="90dp"
         android:gravity="center_horizontal"
         android:id="@+id/linearLayout3">
 
@@ -24,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:fontFamily="sans-serif-thin"
             android:id="@+id/textView" />
 
     </LinearLayout>
@@ -42,7 +44,8 @@
         android:layout_below="@+id/helloUser"
         android:layout_alignRight="@+id/helloUser"
         android:layout_alignEnd="@+id/helloUser"
-        android:layout_marginTop="70dp">
+        android:layout_marginTop="20dp"
+        >
 
 
         <EditText
@@ -55,6 +58,7 @@
             android:textSize="17.5dp"
             android:textColorHint="@color/Gray"
             android:minWidth="300dp"
+            android:minHeight="35dp"
             android:textStyle="italic"
             android:background="@android:color/white" />
 
@@ -65,11 +69,12 @@
             android:hint=" Password"
             android:textSize="17.5dp"
             android:gravity="center"
-            android:textColorHint="@color/Gray"
             android:layout_marginTop="20dp"
             android:minWidth="300dp"
             android:password="false"
+            android:minHeight="35dp"
             android:textStyle="italic"
+            android:textColorHint="@color/Gray"
             android:background="@android:color/white" />
     </LinearLayout>
 
@@ -82,7 +87,7 @@
         android:layout_below="@+id/linearLayout2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="80dp">
+        android:layout_marginTop="40dp">
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
@@ -90,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_below="@+id/linearLayout3"
+            android:minWidth="175dp"
             android:layout_centerHorizontal="true" />
 
 
@@ -98,7 +104,9 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:id="@+id/loginBttn"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/GhostWhite"
             android:minWidth="175dp"
             android:textStyle="italic"
             android:minHeight="40dp"
@@ -108,8 +116,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create Account"
+            android:background="@color/colorPrimary"
             android:id="@+id/createAccountBttn"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/GhostWhite"
             android:layout_marginTop="15dp"
             android:minWidth="175dp"
             android:textStyle="italic"

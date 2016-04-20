@@ -6,6 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/Backround"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_home_page"
     tools:context="edu.pottytrackercsumb.pottytracker.HomePage">
@@ -16,10 +17,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Hello"
         android:id="@+id/helloUser"
-        android:textSize="30dp"
+        android:textSize="35dp"
         android:textStyle="italic"
         android:gravity="center"
-        android:layout_alignParentTop="true" />
+        android:textColor="@color/GhostWhite"
+        android:layout_marginBottom="40dp"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -36,7 +40,9 @@
             android:layout_height="wrap_content"
             android:text="Find A Bathroom"
             android:id="@+id/findBttn"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/GhostWhite"
             android:minWidth="175dp"
             android:textStyle="italic" />
 
@@ -45,7 +51,9 @@
             android:layout_height="wrap_content"
             android:text="Rate A Bathroom"
             android:id="@+id/rateBttn"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/GhostWhite"
             android:layout_marginTop="20dp"
             android:minWidth="175dp"
             android:textStyle="italic" />
@@ -55,6 +63,8 @@
             android:layout_height="wrap_content"
             android:text="View Your Ratings"
             android:id="@+id/ratingBttn"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/GhostWhite"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:minWidth="175dp"
