@@ -24,9 +24,6 @@ import com.facebook.login.LoginManager;
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String firstName, lastName;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +47,9 @@ public class HomePage extends AppCompatActivity
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         String name = sharedPreferences.getString(Config.NAME_SHARED_PREF,"Not Available");
 
+
         //Showing the current logged in email to textview
-        helloUser.setText("Hello " + name );
+        helloUser.setText("Hello " + name);
 
         Button find = (Button) findViewById(R.id.findBttn);
         find.setOnClickListener(new View.OnClickListener() {
@@ -62,11 +60,11 @@ public class HomePage extends AppCompatActivity
             }
         });
 
-        Button rate = (Button) findViewById(R.id.rateBttn);
-        rate.setOnClickListener(new View.OnClickListener() {
+        Button create = (Button) findViewById(R.id.createBttn);
+        create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomePage.this, RateBathroom.class);
+                Intent i = new Intent(HomePage.this, UpdateBathroom.class);
                 startActivity(i);
             }
         });
@@ -127,10 +125,7 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.update_bathroom) {
             Intent update = new Intent(HomePage.this, UpdateBathroom.class);
             startActivity(update);
-        } else if (id == R.id.rate_bathroom) {
-            Intent rate = new Intent(HomePage.this, RateBathroom.class);
-            startActivity(rate);
-        } else if (id == R.id.your_rating) {
+        }else if (id == R.id.your_rating) {
             Intent ratings = new Intent(HomePage.this, YourRatings.class);
             startActivity(ratings);
         } else if (id == R.id.logout) {

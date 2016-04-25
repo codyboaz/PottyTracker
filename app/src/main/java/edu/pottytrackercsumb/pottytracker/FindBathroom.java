@@ -1,17 +1,24 @@
 package edu.pottytrackercsumb.pottytracker;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -21,9 +28,30 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.client.ClientProtocolException;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 
 public class FindBathroom extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -31,14 +59,17 @@ public class FindBathroom extends AppCompatActivity
     private boolean loggedIn = false;
 
     static final LatLng csumb = new LatLng(36.650945, -121.790773);
-    private GoogleMap map;
+    static GoogleMap map;
+    static Marker marker;
+    SharedPreferences sharedPreferences;
+    static String Lat, Lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //In onresume fetching value from sharedpreference
-        SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
         //Fetching the boolean value form sharedpreferences
         loggedIn = sharedPreferences.getBoolean(Config.LOGGEDIN_SHARED_PREF, false);
@@ -49,6 +80,9 @@ public class FindBathroom extends AppCompatActivity
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        new MyAsyncTask().execute();
 
 
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -63,15 +97,7 @@ public class FindBathroom extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.maps)).getMap();
-        Marker CalSt = map.addMarker(new MarkerOptions()
-                .position(csumb).title("CSUMB")
-                .snippet("CSUMB Campus")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.bathroom2))
-                        .anchor(0.0f, 1.0f));
 
-
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                csumb, 12));
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.setMyLocationEnabled(true);
         map.setTrafficEnabled(true);
@@ -79,8 +105,60 @@ public class FindBathroom extends AppCompatActivity
         map.setBuildingsEnabled(true);
         map.getUiSettings().setZoomControlsEnabled(true);
 
+        map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                LatLng position = marker.getPosition();
+                Double lat=position.latitude;
+                Double lng=position.longitude;
+
+                Lat = String.valueOf(lat);
+                Lng = String.valueOf(lng);
+
+               Intent bathroom = new Intent(FindBathroom.this, BathroomPage.class);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                //Adding values to editor
+                editor.putString(Config.LAT_SHARED_PREF, Lat);
+                editor.putString(Config.LONG_SHARED_PREF, Lng);
+
+
+
+                //Saving values to editor
+                editor.commit();
+                startActivity(bathroom);
+
+            }
+        });
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        double longitude = location.getLongitude();
+        double latitude = location.getLatitude();
+
+        LatLng loc = new LatLng(latitude, longitude);
+
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(loc)      // Sets the center of the map to location user
+                .zoom(19)                   // Sets the zoom
+                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+
 
     }
+
 
     @Override
     public void onBackPressed() {
@@ -132,10 +210,7 @@ public class FindBathroom extends AppCompatActivity
         }else if (id == R.id.create) {
             Intent create = new Intent(FindBathroom.this, CreateAccount.class);
             startActivity(create);
-        }else if (id == R.id.rate_bathroom) {
-            Intent rate = new Intent(FindBathroom.this, RateBathroom.class);
-            startActivity(rate);
-        } else if (id == R.id.your_rating) {
+        }else if (id == R.id.your_rating) {
             Intent ratings = new Intent(FindBathroom.this, YourRatings.class);
             startActivity(ratings);
         } else if (id == R.id.logout) {
@@ -157,6 +232,8 @@ public class FindBathroom extends AppCompatActivity
 
                             //Putting blank value to email
                             editor.putString(Config.NAME_SHARED_PREF, "");
+
+
 
                             //Saving the sharedpreferences
                             editor.commit();
@@ -187,5 +264,94 @@ public class FindBathroom extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    class MyAsyncTask extends AsyncTask<String, String, Void> {
+
+        InputStream inputStream = null;
+        String result = "";
+
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+
+            String url_select = "http://codyboaz.com/PottyTracker/getBath.php";
+
+            ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
+
+            try {
+                // Set up HTTP post
+
+                // HttpClient is more then less deprecated. Need to change to URLConnection
+                HttpClient httpClient = new DefaultHttpClient();
+
+                HttpPost httpPost = new HttpPost(url_select);
+                httpPost.setEntity(new UrlEncodedFormEntity(param));
+                HttpResponse httpResponse = httpClient.execute(httpPost);
+                HttpEntity httpEntity = httpResponse.getEntity();
+
+                // Read content & Log
+                inputStream = httpEntity.getContent();
+            } catch (UnsupportedEncodingException e1) {
+                e1.printStackTrace();
+            } catch (ClientProtocolException e2) {
+                Log.e("ClientProtocolException", e2.toString());
+                e2.printStackTrace();
+            } catch (IllegalStateException e3) {
+                Log.e("IllegalStateException", e3.toString());
+                e3.printStackTrace();
+            } catch (IOException e4) {
+                Log.e("IOException", e4.toString());
+                e4.printStackTrace();
+            }
+            // Convert response to string using String Builder
+            try {
+                BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"), 8);
+                StringBuilder sBuilder = new StringBuilder();
+
+                String line = null;
+                while ((line = bReader.readLine()) != null) {
+                    sBuilder.append(line + "\n");
+                }
+
+                inputStream.close();
+                result = sBuilder.toString();
+
+            } catch (Exception e) {
+
+            }
+            return null;
+        }
+
+        protected void onPostExecute(Void v) {
+            //parse JSON data
+            try {
+                JSONArray jArray = new JSONArray(result);
+                for(int i=0; i < jArray.length(); i++) {
+
+                    JSONObject jObject = jArray.getJSONObject(i);
+
+                    String lat = jObject.getString("lat");
+                    String lng = jObject.getString("lng");
+                    String name = jObject.getString("name");
+
+                    Double Lat, Lng;
+                    Lat = Double.parseDouble(lat);
+                    Lng = Double.parseDouble(lng);
+
+                    marker = map.addMarker(new MarkerOptions()
+                            .position(new LatLng(Lat, Lng)).title(name)
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.bathroom2))
+                            .anchor(0.0f, 1.0f));
+
+                }
+            } catch (JSONException e) {
+                Log.e("JSONException", "Error: " + e.toString());
+            }
+        }
+    }
+
+
 
 }

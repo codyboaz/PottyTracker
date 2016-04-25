@@ -2,228 +2,228 @@
 <items version="2" >
 
     <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-95668f9596366bc196c291fc8d7f4e1ca3208f3a.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-47f3e0078b9c67e136867212ea42e1fbcb3b4b76.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.6.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="1c1afa0ab2a8197a5da1b36c4167a9e479cb74d9">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-790d3f9e60007ca602735f0142341c6732ddbbd0.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-d74f736bd73b3313b7940eea264e8bff7e2bcc58.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-cc98b6b94794b71ae4628b7fd841c964fbeed025.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-04d0668b903da5d2215639a6e0d8cbbf338e1091.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-bbbe2a224956d52af6ac7929a3af46421dceb8cb.jar" />
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-6640e618e71fd78d790b740b4edfa7c899690ea0.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d405025c600055237c171a0bbabaa49d69696573">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-908d04dcc465f7e4bc9a2a19e4600178fa6c1880.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-ec5c16640bc1d8ff88869bb7152b950b6117dcfe.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-869c92c9a33b00a87e2c8c2f4f09d01d5e9869ec.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-87adcd7bb106394311d3d15bc57bc076e0cf7357.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-bb626cfa586a7f2d1ca18cb6f6b45afc5c7ae515.jar" />
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-be0f506c450048b5723003947f09ed2058506957.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-f4598631f488404f701293c488a31e476a1a12f0.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.5.0/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-9eca384296507ec32c18c42133341a3a3568329c.jar" />
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-61ead4f4118a0757ecdbc2a706a7d859bdb347d6.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-e25e92052090a9775281209189a9db74507f25f7.jar" />
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-26c5a74a4e1f0cb004a54ba0a663b9e639fbb856.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.5.0/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-3f7378d438512d6715871fe692cdb33742ea1479.jar" />
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-b35eaffc5ba8f7d0f2feeb1470e6f41fe7bb83a7.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.5.0/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-2e5259c294156c715f6958308cfd0845bd822f7a.jar" />
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-f8bc2a2f7685b6a095514b85f41ff53339e687cd.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-daed079d464481fcdeeab6c6829163c69e92f251.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-08e16c5a84ed1fff8fc97773a0f9230ea6be59c3.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-7014ef885c09fe8827a25cbc27a756fd7bc399fc.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-617ca017bf660e663b0c414af282e381eeb1329c.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-ee0bccfed251807c064d6a73b279fa81d150a738.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a78183f30e769a98ab4820794f597763088d3065">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-d50aadbea7e5ac43ea3fdf77b979fc13c8b883b8.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-35a508308cf995599a70bea77edb8ec14df760b6.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.5.0/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-97d7cfac6b7c6348a971edc112af1076f0f879b1.jar" />
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-50f37df976c83d9f1f9817e3b4be50242fd0d495.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-3a0030a411ce80c7436db7abb593eac182c81772.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.5.0/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-e2f2a80ad9d429710b80237faf1cb2dc85919e17.jar" />
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-52002bfa784198e326469ab449744574ee1fa84b.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-337aecde5a1a6784e0749701a670dee39b7f8fd9.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-4a83572b71ff58e27bda522b3bfcd73fef83667d.jar" />
-    </item>
-    <item
-        jar="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.5.0/jars/classes.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/classes-6a62553d6e794e2404d8dad3b85b6cf172c9d5f8.jar" />
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-8c13173f37f54adb639a6dd4406ed71c5f4b6b00.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-0be7dfaa9845a7eb1a140a4481c4d40df60f6a61.jar" />
+        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-ea11f54e817cef0bbcdee4c46da189143a173df2.jar" />
     </item>
     <item
-        jar="/Users/ThDirtyHam/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-630da844a63237388065658d6aafff6006551a8c.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-42c90afc136c49a5d87db0c01fb28ec9be9534bd.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-2ad235f028cd54bb37f745fd601b682c9d5aea6b.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.6.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1c1afa0ab2a8197a5da1b36c4167a9e479cb74d9">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-5a34112a99eca6c62dc81a83120a3197edae1565.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-852799e276ccba8eebc61290ef8d54a7701ca467.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-f2fa5c3273c2fbcd2459282bf3a165d46c8b60a0.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-23962a37d70224b4640327bb935d88d49db8d915.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-c1559dcff583370b53dda09a0dcc2fc49a67fa41.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-cc679be423b30c29cb1f4de53e9f40c407f0f808.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-c5c1469d17c4d6391270649e07a79cfa03fc9cdb.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-63865354a19bda4e7a6903ec2aa049404df020cf.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-1da9d312274a1fa66fed08b365980d8d4eb6b9af.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-57a50fed4e5f6d2a5a907b86be3062a23d1e890e.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-7820093840cc84cd918401754cecad18936e2bc8.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-3782f6027f0f921755d8eea204f5ad43157c3655.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-73bf99a3030fc5de7f765632b393ea222808adac.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="/Users/ThDirtyHam/PottyTracker/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-6320b71fb9f23df1e77e51cb2d8ad63b276df166.jar" />
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-eb7cba6fb67852536615c188edea3807cb9bad55.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-4f69ef685c8089212a7cca325a24433e0cdf5345.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-1c261d1974386cce7216026a0d5547a9c6b292da.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-c88d9d27cf1b0ebd6bbcf1adae7a959a53cf1ccd.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/Desktop/PT/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/classes-262ca5754a8f46809b7e1e5bf29b41129a3af5b7.jar" />
+    </item>
+    <item
+        jar="/Users/Cody/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="/Users/Cody/Desktop/PT/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-2409ae2cbafe2e34e725075029f923f88014aae3.jar" />
     </item>
 
 </items>

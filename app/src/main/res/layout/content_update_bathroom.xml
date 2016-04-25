@@ -1,77 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@color/Backround">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@color/Backround">
-
-    <fragment
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="375dp"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.MapFragment"
-        android:layout_marginTop="75dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="375dp"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_marginTop="75dp" />
 
 
-            <EditText
-        android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/bathroomName"
-        android:hint="Bathroom Name"
-        android:layout_below="@+id/map"
-                android:textColorHint="@color/Gray"
-                android:background="@android:color/white"
-        android:layout_marginTop="15dp" />
-    <EditText
-        android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/bathroomName"
+            android:hint="Bathroom Name"
+            android:layout_below="@+id/map"
+            android:layout_marginTop="15dp"
+            android:textColorHint="@color/Gray"
+            android:background="@android:color/white"
+            android:minHeight="30dp"
+            android:layout_marginBottom="10dp"
+            android:singleLine="true" />
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/addressEditText"
+            android:hint="Street Address"
+            android:layout_below="@+id/map"
+            android:textColorHint="@color/Gray"
+            android:background="@android:color/white"
+            android:layout_marginBottom="10dp"
+            android:minHeight="30dp" />
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/cityEditText"
+            android:hint="City"
+            android:textColorHint="@color/Gray"
+            android:background="@android:color/white"
+            android:layout_marginBottom="10dp"
+            android:minHeight="30dp" />
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/stateEditText"
+            android:hint="State"
+            android:layout_marginBottom="20dp"
+            android:textColorHint="@color/Gray"
+            android:background="@android:color/white"
+            android:minHeight="30dp" />
 
-        android:textColorHint="@color/Gray"
-        android:background="@android:color/white"
-        android:id="@+id/addressEditText"
-        android:hint="Street Address"
-        android:layout_below="@+id/map" />
-    <EditText
-        android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:textColorHint="@color/Gray"
-        android:background="@android:color/white"
-        android:id="@+id/cityEditText"
-        android:hint="City" />
-    <EditText
-        android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/stateEditText"
-        android:hint="State" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Bathroom"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/GhostWhite"
-        android:id="@+id/getAddressButton"
-        android:onClick="showAddressMarker"
-        android:layout_marginBottom="40dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Bathroom"
+            android:id="@+id/getAddressButton"
+            android:onClick="showAddressMarker"
+            android:layout_marginBottom="40dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/GhostWhite"/>
 
     </LinearLayout>
-    </ScrollView>
+</ScrollView>
 
-</RelativeLayout>
+
+

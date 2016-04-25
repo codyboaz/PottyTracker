@@ -91,9 +91,11 @@ public class CreateAccount extends AppCompatActivity
                         //Creating editor to store values to shared preferences
                         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                        String fullName = firstName.getText().toString().trim() + " " + lastName.getText().toString().trim();
+
                         //Adding values to editor
                         editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
-                        editor.putString(Config.NAME_SHARED_PREF, firstName.getText().toString().trim());
+                        editor.putString(Config.NAME_SHARED_PREF, fullName);
 
                         //Saving values to editor
                         editor.commit();

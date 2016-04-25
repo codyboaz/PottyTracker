@@ -6,8 +6,6 @@
             android:title="Find Bathroom" />
         <item android:id="@+id/update_bathroom"
             android:title="Update Bathroom" />
-        <item android:id="@+id/rate_bathroom"
-            android:title="Rate Bathroom" />
         <item android:id="@+id/your_rating"
             android:title="Your Ratings" />
         <item android:id="@+id/logout"

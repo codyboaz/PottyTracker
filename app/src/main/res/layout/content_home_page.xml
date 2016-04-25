@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:text="Find A Bathroom"
             android:id="@+id/findBttn"
-            android:background="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
             android:textColor="@color/GhostWhite"
             android:minWidth="175dp"
             android:textStyle="italic" />
@@ -49,8 +49,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rate A Bathroom"
-            android:id="@+id/rateBttn"
+            android:text="Create New Bathroom"
+            android:id="@+id/createBttn"
             android:background="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/GhostWhite"

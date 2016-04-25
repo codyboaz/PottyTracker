@@ -1,22 +1,30 @@
 package edu.pottytrackercsumb.pottytracker;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -26,6 +34,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -67,9 +76,11 @@ public class UpdateBathroom extends AppCompatActivity
 
     private String Name;
 
-    static final LatLng csumb = new LatLng(36.650945, -121.790773);
+    double lat, lng;
 
-    String lat, lng;
+    static String Lat, Lng, newAddress , newCity, newState, newBathroom;
+    static SharedPreferences preferences;
+    static String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +98,8 @@ public class UpdateBathroom extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        preferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        user_id = preferences.getString(Config.ID_SHARED_PREF,"Not Available");
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 
@@ -109,8 +122,6 @@ public class UpdateBathroom extends AppCompatActivity
 
             }
 
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                    csumb, 12));
             map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
             map.setMyLocationEnabled(true);
             map.setTrafficEnabled(true);
@@ -124,8 +135,41 @@ public class UpdateBathroom extends AppCompatActivity
             e.printStackTrace();
 
         }
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        double longitude = location.getLongitude();
+        double latitude = location.getLatitude();
+
+        LatLng loc = new LatLng(latitude, longitude);
+
+
+
+
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        map.setMyLocationEnabled(true);
+        map.setTrafficEnabled(true);
+        map.setIndoorEnabled(true);
+        map.setBuildingsEnabled(true);
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(loc)      // Sets the center of the map to location user
+                .zoom(18)                   // Sets the zoom
+                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
     }
+
 
     @Override
     public void onBackPressed() {
@@ -177,9 +221,6 @@ public class UpdateBathroom extends AppCompatActivity
         }else if (id == R.id.create) {
             Intent create = new Intent(UpdateBathroom.this, CreateAccount.class);
             startActivity(create);
-        }else if (id == R.id.rate_bathroom) {
-            Intent rate = new Intent(UpdateBathroom.this, RateBathroom.class);
-            startActivity(rate);
         } else if (id == R.id.your_rating) {
             Intent ratings = new Intent(UpdateBathroom.this, YourRatings.class);
             startActivity(ratings);
@@ -193,7 +234,7 @@ public class UpdateBathroom extends AppCompatActivity
                         public void onClick(DialogInterface arg0, int arg1) {
 
                             //Getting out sharedpreferences
-                            SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
+                            preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
                             //Getting editor
                             SharedPreferences.Editor editor = preferences.edit();
 
@@ -246,27 +287,62 @@ public class UpdateBathroom extends AppCompatActivity
 
         // Get the street address entered
 
-        String newAddress = addressEditText.getText().toString().trim();
-        String newCity = cityEditText.getText().toString().trim();
-        String newState = stateEditText.getText().toString().trim();
-        String newBathroom = nameEditText.getText().toString().trim();
+        newAddress = addressEditText.getText().toString().trim();
+        newCity = cityEditText.getText().toString().trim();
+        newState = stateEditText.getText().toString().trim();
+        newBathroom = nameEditText.getText().toString().trim();
 
 
         if(!newAddress.isEmpty() && !newCity.isEmpty() && !newState.isEmpty() && !newBathroom.isEmpty()){
-
-            // Call for the AsyncTask to place a marker
             new PlaceAMarker().execute(newAddress, newCity, newState, newBathroom);
 
-            newAddress = newAddress.replaceAll(" ","%20");
-            newCity = newCity.replaceAll(" ","%20");
-            newState = newState.replaceAll(" ","%20");
-            newBathroom = newBathroom.replaceAll(" ","%20");
+            CharSequence[] items = {" TAP IF CORRECT LOCATION", "TAP IF INCORRECT LOCATION"};
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int item) {
 
+                    if(item == 0) {
+                        preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
+                        //Getting editor
+                        SharedPreferences.Editor editor = preferences.edit();
 
-            String restURL = "http://codyboaz.com/PottyTracker/update_bathroom.php?name=" + newBathroom
-                    + "&city=" + newCity + "&state=" + newState + "&lng=" + lng + "&lat=" + lat
-                    + "&address=" + newAddress;
-            new RestOperation().execute(restURL);
+                        //Putting blank value to email
+                        editor.putString(Config.LAT_SHARED_PREF, Lat);
+
+                        //Putting blank value to email
+                        editor.putString(Config.LONG_SHARED_PREF, Lng);
+
+                        //Saving the sharedpreferences
+                        editor.commit();
+
+                        newAddress = newAddress.replaceAll(" ","%20");
+                        newCity = newCity.replaceAll(" ","%20");
+                        newState = newState.replaceAll(" ","%20");
+                        newBathroom = newBathroom.replaceAll(" ","%20");
+
+                        String restURL = "http://codyboaz.com/PottyTracker/update_bathroom.php?name=" + newBathroom
+                                + "&city=" + newCity + "&state=" + newState + "&lng=" + Lng + "&lat=" + Lat
+                                + "&address=" + newAddress + "&user_ID=" + user_id;
+                        new RestOperation().execute(restURL);
+
+                    } else if(item == 1) {
+
+                    } else if(item == 2) {
+
+                    }
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
+
+            wmlp.gravity = Gravity.BOTTOM | Gravity.LEFT;
+            wmlp.x = 100;   //x position
+            wmlp.y = 100;   //y position
+
+            dialog.show();
+
 
         }
         else{
@@ -311,6 +387,8 @@ public class UpdateBathroom extends AppCompatActivity
                     .anchor(0.0f, 1.0f));
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(
                     addressPos, 16));
+
+
         }
 
     }
@@ -367,21 +445,20 @@ public class UpdateBathroom extends AppCompatActivity
             // Get the returned latitude and longitude
             lng = ((JSONArray)jsonObject.get("results")).getJSONObject(0)
                     .getJSONObject("geometry").getJSONObject("location")
-                    .getString("lng");
+                    .getDouble("lng");
 
             lat = ((JSONArray)jsonObject.get("results")).getJSONObject(0)
                     .getJSONObject("geometry").getJSONObject("location")
-                    .getString("lat");
+                    .getDouble("lat");
 
             // Change the lat and long depending on if we want to set the
             // starting or ending destination
 
-            double Lat, Lng;
 
-            Lat = Double.parseDouble(lat);
-            Lng = Double.parseDouble(lng);
+            Lat = String.valueOf(lat);
+            Lng = String.valueOf(lng);
 
-            addressPos = new LatLng(Lat, Lng);
+            addressPos = new LatLng(lat, lng);
 
 
         } catch (JSONException e) {
@@ -461,6 +538,8 @@ public class UpdateBathroom extends AppCompatActivity
             cityEditText.setText("");
             stateEditText.setText("");
             nameEditText.setText("");
+            Intent i = new Intent(UpdateBathroom.this, RateBathroom.class);
+            startActivity(i);
 
         }
     }

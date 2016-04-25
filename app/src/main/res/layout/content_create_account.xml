@@ -19,7 +19,8 @@
         android:textColor="@color/GhostWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="5dp" />
 
     <EditText
         android:id="@+id/firstName"
@@ -27,14 +28,17 @@
         android:layout_marginBottom="15dp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/Gray"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        android:minHeight="35dp"
+        android:singleLine="true" />
 
     <TextView
         android:text="Last Name"
         android:textSize="20dp"
         android:textColor="@color/GhostWhite"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp" />
 
     <EditText
         android:id="@+id/lastName"
@@ -42,14 +46,17 @@
         android:layout_marginBottom="15dp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/Gray"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        android:minHeight="35dp"
+        android:singleLine="true" />
 
     <TextView
         android:text="Username"
-        android:textSize="20dp"
+        android:textSize="22dp"
         android:textColor="@color/GhostWhite"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp" />
 
     <EditText
         android:id="@+id/username"
@@ -57,14 +64,17 @@
         android:layout_marginBottom="15dp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/Gray"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        android:minHeight="35dp"
+        android:singleLine="true" />
 
     <TextView
         android:text="Password"
         android:textSize="20dp"
         android:textColor="@color/GhostWhite"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp" />
 
     <EditText
         android:id="@+id/password"
@@ -73,22 +83,27 @@
         android:layout_marginBottom="15dp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/Gray"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        android:minHeight="35dp"
+        android:singleLine="true" />
     <TextView
         android:text="Confirm Password"
         android:textColor="@color/GhostWhite"
         android:textSize="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp" />
 
     <EditText
         android:id="@+id/rePassword"
         android:layout_width="match_parent"
         android:inputType="textPassword"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/Gray"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        android:minHeight="35dp"
+        android:singleLine="true" />
 
 
 
@@ -97,7 +112,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:gravity="center_horizontal">
 
         <Button

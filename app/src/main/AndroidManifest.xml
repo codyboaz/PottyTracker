@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.pottytrackercsumb.pottytracker" >
+    package="edu.pottytrackercsumb.pottytracker">
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -25,7 +25,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDkdZzeTf8mX1WzcRKIbbpZl7cH7VD8c-s" />
@@ -37,7 +37,7 @@
             android:name=".SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,26 +48,22 @@
             android:name=".MainActivity"
             android:label="@string/empty_title"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".RateBathroom"
-            android:label="@string/title_activity_rate_bathroom"
+            android:label=""
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".CreateAccount"
             android:label="@string/title_activity_create_account"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".FindBathroom"
             android:label="@string/title_activity_find_bathroom"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -77,19 +73,20 @@
             android:name=".UpdateBathroom"
             android:label="@string/title_activity_update_bathroom"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".YourRatings"
-            android:label="@string/title_activity_your_ratings"
+            android:label=""
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".HomePage"
             android:label="@string/empty_title"
-            android:theme="@style/AppTheme" >
-        </activity>
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".BathroomPage"
+            android:label=""
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>

@@ -134,12 +134,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Potty Tracker"
         android:id="@+id/helloUser"
-        android:textSize="40dp"
+        android:textSize="43dp"
         android:textStyle="bold|italic"
         android:gravity="center"
         android:textColor="@color/GhostWhite"
-        android:layout_alignBottom="@+id/linearLayout3"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
 
 
 

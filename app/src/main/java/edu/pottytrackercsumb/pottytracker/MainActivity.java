@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
 
     private boolean loggedIn = false;
     private CallbackManager callbackManager;
-    private String firstName;
+    private String firstName, user_id;
     private Profile profile;
     private ProfileTracker mProfileTracker;
     SharedPreferences sharedPreferences;
@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity
                                     } else {
                                         profile = Profile.getCurrentProfile();
                                         firstName = profile.getName();
+                                        user_id = profile.getId();
                                         Log.e("test", firstName);
 
                                         //Creating editor to store values to shared preferences
@@ -145,6 +146,8 @@ public class MainActivity extends AppCompatActivity
                                         //Adding values to editor
                                         editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
                                         editor.putString(Config.NAME_SHARED_PREF, firstName);
+                                        editor.putString(Config.ID_SHARED_PREF, user_id);
+
 
                                         //Saving values to editor
                                         editor.commit();
@@ -339,21 +342,21 @@ public class MainActivity extends AppCompatActivity
             } else {
                 try {
                     JSONObject o = new JSONObject(content);
-                    String user = o.getString("username");
                     String fName = o.getString("firstName");
                     String lName = o.getString("lastName");
+                    String id = o.getString("ID");
+
+                    String fullName = fName + " " + lName;
 
                     Intent myIntent = new Intent(MainActivity.this, HomePage.class);
-                    myIntent.putExtra("Username", user);
-                    myIntent.putExtra("First Name", fName);
-                    myIntent.putExtra("Last Name", lName);
 
                     //Creating editor to store values to shared preferences
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
                     //Adding values to editor
                     editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
-                    editor.putString(Config.NAME_SHARED_PREF, fName);
+                    editor.putString(Config.NAME_SHARED_PREF, fullName);
+                    editor.putString(Config.ID_SHARED_PREF, id);
 
                     //Saving values to editor
                     editor.commit();

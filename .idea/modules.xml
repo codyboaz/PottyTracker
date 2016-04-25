@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PottyTracker.iml" filepath="$PROJECT_DIR$/PottyTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PT.iml" filepath="$PROJECT_DIR$/PT.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

@@ -7,9 +7,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_your_ratings"
     tools:context="edu.pottytrackercsumb.pottytracker.YourRatings"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/Backround">
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -17,49 +18,37 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Location"
-            android:id="@+id/textView11"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Rating"
+            android:text="Ratings"
             android:id="@+id/textView13"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            android:textSize="45dp"
+            android:textColor="@color/GhostWhite" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Comments"
-            android:id="@+id/textView12"
-            android:textStyle="bold|italic" />
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:drawSelectorOnTop="false"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="350dp"
-        android:gravity="center_horizontal">
+        android:textColor="@color/GhostWhite">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Return"
-            android:id="@+id/returnBttn"
-            android:minWidth="100dp" />
+    </ListView>
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
