@@ -56,12 +56,12 @@
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".CreateAccount"
-            android:label="@string/title_activity_create_account"
+            android:label=""
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".FindBathroom"
-            android:label="@string/title_activity_find_bathroom"
+            android:label=""
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
@@ -71,7 +71,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".UpdateBathroom"
-            android:label="@string/title_activity_update_bathroom"
+            android:label=""
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity

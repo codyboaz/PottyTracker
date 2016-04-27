@@ -296,7 +296,7 @@ public class UpdateBathroom extends AppCompatActivity
         if(!newAddress.isEmpty() && !newCity.isEmpty() && !newState.isEmpty() && !newBathroom.isEmpty()){
             new PlaceAMarker().execute(newAddress, newCity, newState, newBathroom);
 
-            CharSequence[] items = {" TAP IF CORRECT LOCATION", "TAP IF INCORRECT LOCATION"};
+            CharSequence[] items = {" TAP HERE IF CORRECT LOCATION", "TAP HERE IF INCORRECT LOCATION"};
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setItems(items, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int item) {

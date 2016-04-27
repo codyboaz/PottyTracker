@@ -262,9 +262,13 @@ public class RateBathroom extends AppCompatActivity
 
                 String comment = edittext.getText().toString();
                 comment = comment.replaceAll(" ","%20");
+                sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                String rating_by = sharedPreferences.getString(Config.NAME_SHARED_PREF, "Not Available");
+                rating_by = rating_by.replaceAll(" ","%20");
 
                 String restURL = "http://codyboaz.com/PottyTracker/rating.php?user_id=" + user_id
-                        + "&bath_id=" + bath_id +"&rating=" + rate + "&comment=" + comment;
+                        + "&bath_id=" + bath_id + "&rating=" + rate + "&comment=" + comment + "&rating_by=" + rating_by;
                 new RestOperation().execute(restURL);
             }
         });

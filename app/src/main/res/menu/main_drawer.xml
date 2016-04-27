@@ -2,10 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/find_bathroom"
-            android:title="Find Bathroom" />
-        <item android:id="@+id/update_bathroom"
-            android:title="Update Bathroom" />
         <item android:id="@+id/create"
             android:title="Create Account" />
     </group>

@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
 
         <item android:id="@+id/update_bathroom"
-            android:title="Update Bathroom" />
+            android:title="Add Bathroom" />
         <item android:id="@+id/create"
             android:title="Create Account" />
         <item android:id="@+id/login"

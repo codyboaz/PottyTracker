@@ -9,6 +9,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.pottytrackercsumb.pottytracker.BathroomPage"
     android:background="@color/Backround">
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
 
     <TextView
         android:layout_width="wrap_content"
@@ -150,6 +162,7 @@
             android:textColor="@color/GhostWhite"/>
     </LinearLayout>
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -160,6 +173,69 @@
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:textColor="@color/GhostWhite"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView7"
+        android:id="@+id/linlay"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Rating"
+            android:id="@+id/textView9"
+            android:textSize="20dp"
+            android:textColor="@color/GhostWhite"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="By"
+            android:id="@+id/textView11"
+            android:layout_marginRight="98dp"
+            android:layout_marginLeft="40dp"
+            android:textSize="20dp"
+            android:textColor="@color/GhostWhite"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Comment"
+            android:id="@+id/textView12"
+            android:textSize="20dp"
+            android:textColor="@color/GhostWhite"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:drawSelectorOnTop="false"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/GhostWhite"
+        android:layout_below="@+id/linlay"
+        android:gravity="center">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </RelativeLayout>
