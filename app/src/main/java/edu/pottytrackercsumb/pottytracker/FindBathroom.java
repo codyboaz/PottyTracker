@@ -21,7 +21,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,18 +31,15 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
 import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.NameValuePair;
@@ -56,48 +52,40 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 public class FindBathroom extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    private boolean loggedIn = false;
-
-    static final LatLng csumb = new LatLng(36.650945, -121.790773);
+    //initialize google map and marker
     static GoogleMap map;
     static Marker marker;
-    SharedPreferences sharedPreferences;
+    static SharedPreferences sharedPreferences;
+    //latitude and longitude variables
     static String Lat, Lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //In onresume fetching value from sharedpreference
-        sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-
-        //Fetching the boolean value form sharedpreferences
-        loggedIn = sharedPreferences.getBoolean(Config.LOGGEDIN_SHARED_PREF, false);
-        if(loggedIn) {
-            setContentView(R.layout.activity_find_bathroom);
-        }else{
-            setContentView(R.layout.activity_find_bathroom2);
-        }
+        setContentView(R.layout.activity_find_bathroom);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //initialize shared prefs to store user/app info locally
+        sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
-        new MyAsyncTask().execute();
-
-
+        //Initialize facebook SDK
         FacebookSdk.sdkInitialize(getApplicationContext());
 
+        //Initialize navigation drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.maps)).getMap();
+        //call to asyncTask to get all bathroom locations
+        new MyAsyncTask().execute();
 
+        //initialize map and map settings
+        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.maps)).getMap();
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.setMyLocationEnabled(true);
         map.setTrafficEnabled(true);
@@ -105,13 +93,14 @@ public class FindBathroom extends AppCompatActivity
         map.setBuildingsEnabled(true);
         map.getUiSettings().setZoomControlsEnabled(true);
 
+        //on click listener for map pins
         map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
+                //get lat, lng of current pin
                 LatLng position = marker.getPosition();
                 Double lat=position.latitude;
                 Double lng=position.longitude;
-
                 Lat = String.valueOf(lat);
                 Lng = String.valueOf(lng);
 
@@ -121,15 +110,13 @@ public class FindBathroom extends AppCompatActivity
                 //Adding values to editor
                 editor.putString(Config.LAT_SHARED_PREF, Lat);
                 editor.putString(Config.LONG_SHARED_PREF, Lng);
-
-
-
                 //Saving values to editor
                 editor.commit();
                 startActivity(bathroom);
 
             }
         });
+        //location manager to get info for current location
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -144,18 +131,14 @@ public class FindBathroom extends AppCompatActivity
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         double longitude = location.getLongitude();
         double latitude = location.getLatitude();
-
         LatLng loc = new LatLng(latitude, longitude);
-
-
+        //position camera to current location
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(loc)      // Sets the center of the map to location user
-                .zoom(19)                   // Sets the zoom
+                .zoom(16)                   // Sets the zoom
                 .tilt(30)                   // Sets the tilt of the camera to 30 degrees
                 .build();                   // Creates a CameraPosition from the builder
         map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-
 
     }
 
@@ -188,7 +171,6 @@ public class FindBathroom extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -201,15 +183,9 @@ public class FindBathroom extends AppCompatActivity
         if (id == R.id.home) {
             Intent home = new Intent(FindBathroom.this, HomePage.class);
             startActivity(home);
-        } else if (id == R.id.login) {
-            Intent login = new Intent(FindBathroom.this, MainActivity.class);
-            startActivity(login);
         }else if (id == R.id.update_bathroom) {
             Intent update = new Intent(FindBathroom.this, UpdateBathroom.class);
             startActivity(update);
-        }else if (id == R.id.create) {
-            Intent create = new Intent(FindBathroom.this, CreateAccount.class);
-            startActivity(create);
         }else if (id == R.id.your_rating) {
             Intent ratings = new Intent(FindBathroom.this, YourRatings.class);
             startActivity(ratings);
@@ -226,20 +202,14 @@ public class FindBathroom extends AppCompatActivity
                             SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
                             //Getting editor
                             SharedPreferences.Editor editor = preferences.edit();
-
                             //Puting the value false for loggedin
                             editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, false);
-
-                            //Putting blank value to email
+                            //Putting blank value to name
                             editor.putString(Config.NAME_SHARED_PREF, "");
-
-
-
                             //Saving the sharedpreferences
                             editor.commit();
-
+                            //log user out of facebook
                             LoginManager.getInstance().logOut();
-
                             //Starting login activity
                             Intent intent = new Intent(FindBathroom.this, MainActivity.class);
                             startActivity(intent);
@@ -265,6 +235,7 @@ public class FindBathroom extends AppCompatActivity
         return true;
     }
 
+    // loads all bathrooms onto map from database
     class MyAsyncTask extends AsyncTask<String, String, Void> {
 
         InputStream inputStream = null;
@@ -277,20 +248,15 @@ public class FindBathroom extends AppCompatActivity
         protected Void doInBackground(String... params) {
 
             String url_select = "http://codyboaz.com/PottyTracker/getBath.php";
-
             ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
 
             try {
-                // Set up HTTP post
-
-                // HttpClient is more then less deprecated. Need to change to URLConnection
+               // HttpClient is more then less deprecated. Need to change to URLConnection
                 HttpClient httpClient = new DefaultHttpClient();
-
                 HttpPost httpPost = new HttpPost(url_select);
                 httpPost.setEntity(new UrlEncodedFormEntity(param));
                 HttpResponse httpResponse = httpClient.execute(httpPost);
                 HttpEntity httpEntity = httpResponse.getEntity();
-
                 // Read content & Log
                 inputStream = httpEntity.getContent();
             } catch (UnsupportedEncodingException e1) {
@@ -329,29 +295,38 @@ public class FindBathroom extends AppCompatActivity
             try {
                 JSONArray jArray = new JSONArray(result);
                 for(int i=0; i < jArray.length(); i++) {
-
+                    //gets bathroom info for all bathrooms
                     JSONObject jObject = jArray.getJSONObject(i);
-
                     String lat = jObject.getString("lat");
                     String lng = jObject.getString("lng");
                     String name = jObject.getString("name");
-
+                    String rate = jObject.getString("rating");
+                    double rating = Double.valueOf(rate);
                     Double Lat, Lng;
                     Lat = Double.parseDouble(lat);
                     Lng = Double.parseDouble(lng);
 
-                    marker = map.addMarker(new MarkerOptions()
-                            .position(new LatLng(Lat, Lng)).title(name)
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.bathroom2))
-                            .anchor(0.0f, 1.0f));
-
+                    //places different color marker based off of bathroom rating
+                    if(rating < 1.67) {
+                        marker = map.addMarker(new MarkerOptions()
+                                .position(new LatLng(Lat, Lng)).title(name).snippet("Rating: " + rate)
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bathroom2_red))
+                                .anchor(0.0f, 1.0f));
+                    }else if(rating > 1.67 && rating < 3.34){
+                        marker = map.addMarker(new MarkerOptions()
+                                .position(new LatLng(Lat, Lng)).title(name).snippet("Rating: " + rate)
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bathroom2_yellow))
+                                .anchor(0.0f, 1.0f));
+                    }else{
+                        marker = map.addMarker(new MarkerOptions()
+                                .position(new LatLng(Lat, Lng)).title(name).snippet("Rating: " + rate)
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bathroom2_blue))
+                                .anchor(0.0f, 1.0f));
+                    }
                 }
             } catch (JSONException e) {
                 Log.e("JSONException", "Error: " + e.toString());
             }
         }
     }
-
-
-
 }

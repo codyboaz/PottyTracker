@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,6 +30,7 @@ import java.net.URLConnection;
 public class CreateAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
+    // create loggin information
     private EditText firstName, lastName, username, password, rePassword;
 
     @Override
@@ -40,16 +40,16 @@ public class CreateAccount extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //initialize navigation drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //cancel button
         Button cancel = (Button) findViewById(R.id.cancelButton);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,12 +59,7 @@ public class CreateAccount extends AppCompatActivity
             }
         });
 
-        firstName = (EditText) findViewById(R.id.firstName);
-        lastName = (EditText) findViewById(R.id.lastName);
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
-
-
+        //create button
         Button create = (Button) findViewById(R.id.createBttn);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,42 +70,41 @@ public class CreateAccount extends AppCompatActivity
                 password = (EditText) findViewById(R.id.password);
                 rePassword = (EditText) findViewById(R.id.rePassword);
 
+                //check if password and re-entered password are equal toast, else send data to database
                 if (password.getText().toString().equals(rePassword.getText().toString())) {
+                    //if one of the fields are empty
                     if (firstName.getText().toString().isEmpty() || lastName.getText().toString().isEmpty()
                             || username.getText().toString().isEmpty() || password.getText().toString().isEmpty()
                             || rePassword.getText().toString().isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Please Enter all information",
                                 Toast.LENGTH_LONG).show();
-                    } else {
+                    }else {
+                        //build URL string for call to database
                         String restURL = "http://codyboaz.com/PottyTracker/create_user.php?username=" + username.getText().toString().trim()
                                 + "&password=" + password.getText().toString().trim() + "&fName=" + firstName.getText().toString().trim()
                                 + "&lName=" + lastName.getText().toString().trim();
 
                         SharedPreferences sharedPreferences = CreateAccount.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-
                         //Creating editor to store values to shared preferences
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-
+                        //stores full name in shared prefs
                         String fullName = firstName.getText().toString().trim() + " " + lastName.getText().toString().trim();
 
                         //Adding values to editor
                         editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
                         editor.putString(Config.NAME_SHARED_PREF, fullName);
-
                         //Saving values to editor
                         editor.commit();
 
+                        //Call to REST operation function
                         new RestOperation().execute(restURL);
-
                     }
-                } else {
+                } else { //if passwords dont match
                     Toast.makeText(getApplicationContext(), "Passwords do not match",
                             Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
     }
 
     @Override
@@ -151,22 +145,16 @@ public class CreateAccount extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.find_bathroom) {
-            Intent find = new Intent(CreateAccount.this, FindBathroom.class);
-            startActivity(find);
-        } else if (id == R.id.update_bathroom) {
-            Intent update = new Intent(CreateAccount.this, UpdateBathroom.class);
-            startActivity(update);
-        } else if (id == R.id.login) {
+       if (id == R.id.login) {
             Intent logIn = new Intent(CreateAccount.this, MainActivity.class);
             startActivity(logIn);
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
+    //REST call to store data to database
     private class RestOperation extends AsyncTask<String, Void, Void> {
 
         String content;
@@ -177,24 +165,19 @@ public class CreateAccount extends AppCompatActivity
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
             progressDialog.setTitle("Please wait ...");
             progressDialog.show();
-
         }
-
         @Override
         protected Void doInBackground(String... params) {
             BufferedReader br = null;
 
             URL url;
             try {
+                //get URL
                 url = new URL(params[0]);
-
                 URLConnection connection = url.openConnection();
                 connection.setDoOutput(true);
-
-
                 OutputStreamWriter outputStreamWr = new OutputStreamWriter(connection.getOutputStream());
                 outputStreamWr.write(data);
                 outputStreamWr.flush();
@@ -207,10 +190,7 @@ public class CreateAccount extends AppCompatActivity
                     sb.append(line);
                     sb.append(System.getProperty("line.separator"));
                 }
-
                 content = sb.toString();
-
-
 
             } catch (MalformedURLException e) {
                 error = e.getMessage();
@@ -233,6 +213,8 @@ public class CreateAccount extends AppCompatActivity
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             progressDialog.dismiss();
+
+            //Start new intent
             Toast.makeText(getApplicationContext(), "Account created", Toast.LENGTH_LONG).show();
             Intent i = new Intent(CreateAccount.this,HomePage.class);
             i.putExtra("Username", username.getText().toString());
@@ -242,7 +224,4 @@ public class CreateAccount extends AppCompatActivity
             startActivity(i);
         }
     }
-
-
-
 }

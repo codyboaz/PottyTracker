@@ -23,18 +23,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
 import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.NameValuePair;
@@ -47,6 +46,7 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 public class YourRatings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
+    //list views to display users ratings
     private static ArrayList<String> listItems = new ArrayList<String>();
     private static ListView mainListView;
     private static ArrayAdapter<String> listAdapter;
@@ -61,23 +61,22 @@ public class YourRatings extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //initialize facebook SDK
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        //initialize navigation drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         mainListView = (ListView) findViewById(R.id.list);
 
         //get ratings from current user and store into listItems
-
-
         new MyAsyncTask().execute();
-
-
 
     }
 
@@ -142,15 +141,15 @@ public class YourRatings extends AppCompatActivity
                             SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
                             //Getting editor
                             SharedPreferences.Editor editor = preferences.edit();
-
                             //Puting the value false for loggedin
                             editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, false);
-
-                            //Putting blank value to email
+                            //Putting blank value to name
                             editor.putString(Config.NAME_SHARED_PREF, "");
-
                             //Saving the sharedpreferences
                             editor.commit();
+
+                            //log user out of facebook
+                            LoginManager.getInstance().logOut();
 
                             //Starting login activity
                             Intent intent = new Intent(YourRatings.this, MainActivity.class);
@@ -177,11 +176,12 @@ public class YourRatings extends AppCompatActivity
         return true;
     }
 
+    //creates list of all ratings
     private static void addToList(String r){
         tempString.add(r);
-
     }
 
+    //gets all ratings from database for user
     class MyAsyncTask extends AsyncTask<String, String, Void> {
 
         InputStream inputStream = null;
@@ -198,21 +198,18 @@ public class YourRatings extends AppCompatActivity
             //Fetching the boolean value form sharedpreferences
             user_id = sharedPreferences.getString(Config.ID_SHARED_PREF, "00");
 
+            //call to database based off user's id
             String url_select = "http://codyboaz.com/PottyTracker/yourRate.php?user_id=" + user_id;
 
             ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
 
             try {
-                // Set up HTTP post
-
                 // HttpClient is more then less deprecated. Need to change to URLConnection
                 HttpClient httpClient = new DefaultHttpClient();
-
                 HttpPost httpPost = new HttpPost(url_select);
                 httpPost.setEntity(new UrlEncodedFormEntity(param));
                 HttpResponse httpResponse = httpClient.execute(httpPost);
                 HttpEntity httpEntity = httpResponse.getEntity();
-
                 // Read content & Log
                 inputStream = httpEntity.getContent();
             } catch (UnsupportedEncodingException e1) {
@@ -236,12 +233,10 @@ public class YourRatings extends AppCompatActivity
                 while ((line = bReader.readLine()) != null) {
                     sBuilder.append(line + "\n");
                 }
-
                 inputStream.close();
                 result = sBuilder.toString();
 
             } catch (Exception e) {
-
             }
             return null;
         }
@@ -250,20 +245,21 @@ public class YourRatings extends AppCompatActivity
             //parse JSON data
             try {
                 JSONArray jArray = new JSONArray(result);
+                //clears list so when page is rebooted list is initially empty
                 tempString.clear();
                 listItems.clear();
                 for(int i=0; i < jArray.length(); i++) {
-
+                    //gets user info and rating info from database
                     JSONObject jObject = jArray.getJSONObject(i);
-
                     String name = jObject.getString("name");
                     String rate = jObject.getString("rating");
                     String comment = jObject.getString("comment");
+                    //formats rating
                     rating = "Name: " + name + "  ||  Rating:  " + rate + "  ||  Comments:  " + comment;
+                    //adds rating to list
                     addToList(rating);
-
-
                 }
+                //if ratings exist populate list view
                 if (tempString.size() > 0) {
                     listItems.addAll(tempString);
                     tempString.clear();
@@ -273,14 +269,11 @@ public class YourRatings extends AppCompatActivity
                     public View getView(int position, View convertView, ViewGroup parent){
                         // Get the Item from ListView
                         View view = super.getView(position, convertView, parent);
-
                         // Initialize a TextView for ListView each Item
                         TextView tv = (TextView) view.findViewById(android.R.id.text1);
-
                         // Set the text color of TextView (ListView Item)
                         tv.setTextColor(Color.parseColor("#F8F8FF"));
                         tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-
                         // Generate ListView Item using TextView
                         return view;
                     }
@@ -291,5 +284,4 @@ public class YourRatings extends AppCompatActivity
             }
         }
     }
-
 }

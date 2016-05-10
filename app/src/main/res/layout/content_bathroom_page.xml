@@ -32,8 +32,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@color/GhostWhite"
-        android:textSize="25dp"
-        android:layout_marginBottom="5dp"
+        android:textSize="@dimen/infoTextSize"
+        android:layout_marginBottom="@dimen/smallPadding"
         android:textStyle="bold"
         android:layout_marginTop="60dp" />
 
@@ -45,7 +45,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="@color/GhostWhite"
-        android:layout_marginBottom="5dp"></LinearLayout>
+        android:layout_marginBottom="@dimen/smallPadding">
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,7 +59,7 @@
         android:layout_alignParentStart="true"
         android:textColor="@color/GhostWhite"
         android:textSize="25dp"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="@dimen/infoPadding" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -94,7 +96,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="@dimen/standardSize"
         android:layout_below="@+id/linearLayout6"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
@@ -107,7 +109,7 @@
             android:text="Rating:  "
             android:id="@+id/textView8"
             android:textColor="@color/GhostWhite"
-            android:textSize="25dp"/>
+            android:textSize="@dimen/infoTextSize"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -116,7 +118,8 @@
             android:id="@+id/bathRating"
             android:textColor="@color/GhostWhite"
             android:textSize="25dp"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="15dp"
+            android:text=""/>
     </LinearLayout>
 
     <LinearLayout
@@ -147,7 +150,8 @@
             android:layout_height="wrap_content"
             android:text="Rate Bathroom"
             android:id="@+id/rateBttn"
-            android:minWidth="130dp"
+            android:minWidth="@dimen/medButtonWidth"
+            android:minHeight="@dimen/medButtonHeight"
             android:background="@color/colorPrimary"
             android:textColor="@color/GhostWhite"/>
 
@@ -156,7 +160,8 @@
             android:layout_height="wrap_content"
             android:text="Back"
             android:id="@+id/backBttn"
-            android:minWidth="130dp"
+            android:minWidth="@dimen/medButtonWidth"
+            android:minHeight="@dimen/medButtonHeight"
             android:layout_marginLeft="30dp"
             android:background="@color/colorPrimary"
             android:textColor="@color/GhostWhite"/>
@@ -171,7 +176,7 @@
         android:id="@+id/textView7"
         android:layout_below="@+id/linearLayout9"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"
+        android:textSize="@dimen/descTextSize"
         android:textColor="@color/GhostWhite"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"

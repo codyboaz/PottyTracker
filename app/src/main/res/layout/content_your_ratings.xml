@@ -18,8 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="50dp">
+        android:layout_marginTop="@dimen/standardPadding"
+        android:layout_marginBottom="@dimen/largePadding">
 
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:textStyle="bold|italic"
-            android:textSize="45dp"
+            android:textSize="@dimen/largeTextSize"
             android:textColor="@color/GhostWhite" />
 
     </LinearLayout>

@@ -7,4 +7,45 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
 
+    <dimen name="standardSize">30dp</dimen>
+
+    <dimen name="mapHeight">375dp</dimen>
+    <dimen name="infoTextSize">25dp</dimen>
+    <dimen name="standardTextSize">20dp</dimen>
+    <dimen name="largeTextSize">45dp</dimen>
+    <dimen name="descTextSize">30dp</dimen>
+
+    <dimen name="buttonPadding">20dp</dimen>
+    <dimen name="homeText">30dp</dimen>
+    <dimen name="largeButtonHeight">50dp</dimen>
+    <dimen name="largeButtonWidth">145dp</dimen>
+    <dimen name="medButtonWidth">100dp</dimen>
+    <dimen name="medButtonHeight">50dp</dimen>
+    <dimen name="infoButtonWidth">130dp</dimen>
+
+    <dimen name="textBoxHeight">35dp</dimen>
+
+    <dimen name="infoPadding">30dp</dimen>
+    <dimen name="xLargePadding">150dp</dimen>
+    <dimen name="largePadding">40dp</dimen>
+    <dimen name="standardPadding">15dp</dimen>
+    <dimen name="standardPadding2">7dp</dimen>
+    <dimen name="topPadding">60dp</dimen>
+    <dimen name="smallPadding">5dp</dimen>
+    <dimen name="BathPaddingTop">12dp</dimen>
+
+    <dimen name="linlayHeight">230dp</dimen>
+
+    <dimen name="imageHeight">130dp</dimen>
+    <dimen name="imageWidth">150dp</dimen>
+
+
+    <dimen name="mediumTextBoxHeight">30dp</dimen>
+    <dimen name="mediumTextBoxWidth">215dp</dimen>
+
+    <dimen name="standardTextBoxSize">35dp</dimen>
+    <dimen name="largeTextBoxWidth">300dp</dimen>
+
+    <dimen name="radioHeight">60dp</dimen>
+
 </resources>

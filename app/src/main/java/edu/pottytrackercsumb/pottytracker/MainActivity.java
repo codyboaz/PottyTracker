@@ -13,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,9 +25,8 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
+import com.facebook.GraphRequestBatch;
 import com.facebook.GraphResponse;
-import com.facebook.Profile;
-import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -51,34 +49,32 @@ public class MainActivity extends AppCompatActivity
     private boolean loggedIn = false;
     private CallbackManager callbackManager;
     private String firstName, user_id;
-    private Profile profile;
-    private ProfileTracker mProfileTracker;
     SharedPreferences sharedPreferences;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Initialize facebook SDK
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //initialize shared prefs to store user/app info locally
         sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
-
+        //navigation drawer set up
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
+        //create account button
         Button create = (Button) findViewById(R.id.createAccountBttn);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,12 +84,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
-
         final EditText userinput = (EditText) findViewById(R.id.username);
         final EditText password = (EditText) findViewById(R.id.password);
         password.setTransformationMethod(new PasswordTransformationMethod());
-
 
         // Login to database
         Button login = (Button) findViewById(R.id.loginBttn);
@@ -102,84 +95,62 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 String restURL = "http://codyboaz.com/PottyTracker/get_login.php?username=" + userinput.getText().toString().trim() + "&password=" + password.getText().toString().trim();
                 new RestOperation().execute(restURL);
-
             }
         });
 
         // connect with facebook
         LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");
-
-
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 loginResult.getAccessToken().getToken();
-
-                GraphRequest.newMeRequest(
-                        loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-
-                            @Override
-                            public void onCompleted(JSONObject me, GraphResponse response) {
-                                if (response.getError() != null) {
-                                    Log.e("test2", "Did i get here");
-                                } else {
-                                    if(Profile.getCurrentProfile() == null) {
-                                        Log.e("test", "Did i get here 2");
-                                        mProfileTracker = new ProfileTracker() {
-                                            @Override
-                                            protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
-                                                Log.v("facebook - profile", profile2.getFirstName());
-                                                mProfileTracker.stopTracking();
-                                            }
-                                        };
-                                        mProfileTracker.startTracking();
-                                    } else {
-                                        profile = Profile.getCurrentProfile();
-                                        firstName = profile.getName();
-                                        user_id = profile.getId();
-                                        Log.e("test", firstName);
+                //Get user info from facebook
+                GraphRequestBatch batch = new GraphRequestBatch(
+                        GraphRequest.newMeRequest(
+                                loginResult.getAccessToken(),
+                                new GraphRequest.GraphJSONObjectCallback() {
+                                    @Override
+                                    public void onCompleted(
+                                            JSONObject object,
+                                            GraphResponse response) {
+                                        try {
+                                            firstName = object.getString("name");
+                                            user_id = object.getString("id");
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
 
                                         //Creating editor to store values to shared preferences
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
-
                                         //Adding values to editor
                                         editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
                                         editor.putString(Config.NAME_SHARED_PREF, firstName);
                                         editor.putString(Config.ID_SHARED_PREF, user_id);
-
-
                                         //Saving values to editor
                                         editor.commit();
                                     }
-                                }
-                                Intent intent = new Intent(MainActivity.this, HomePage.class);
+                                }));
 
-                                startActivity(intent);
-                            }
+                batch.addCallback(new GraphRequestBatch.Callback() {
+                    @Override
+                    public void onBatchCompleted(GraphRequestBatch graphRequests) {
+                        Intent intent = new Intent(MainActivity.this, HomePage.class);
+                        startActivity(intent);
+                    }
 
-
-                        }).executeAsync();
-
-
-
-
-
-
-
+                });
+                batch.executeAsync();
             }
-
             @Override
             public void onCancel() {
 
             }
-
             @Override
             public void onError(FacebookException e) {
 
             }
         });
-
     }
 
     @Override
@@ -192,13 +163,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+        //If user is logged in already will boot to home page
         //In onresume fetching value from sharedpreference
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
-
         //Fetching the boolean value form sharedpreferences
         loggedIn = sharedPreferences.getBoolean(Config.LOGGEDIN_SHARED_PREF, false);
-
-
         //If we will get true
         if(loggedIn){
             //We will start the Profile Activity
@@ -235,7 +204,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -246,22 +214,16 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.find_bathroom) {
-            Intent find = new Intent(MainActivity.this, FindBathroom.class);
-            startActivity(find);
-        } else if (id == R.id.update_bathroom) {
-            Intent update = new Intent(MainActivity.this, UpdateBathroom.class);
-            startActivity(update);
-        } else if (id == R.id.create) {
+        if (id == R.id.create) {
             Intent create = new Intent(MainActivity.this, CreateAccount.class);
             startActivity(create);
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
+    //REST operation to confirm user login
     private class RestOperation extends AsyncTask<String, Void, Void> {
 
         String content;
@@ -273,7 +235,6 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
             progressDialog.setTitle("Please wait ...");
             progressDialog.show();
 
@@ -288,31 +249,23 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected Void doInBackground(String... params) {
             BufferedReader br = null;
-
+            //get URL for login
             URL url;
             try {
                 url = new URL(params[0]);
-
                 URLConnection connection = url.openConnection();
                 connection.setDoOutput(true);
-
-
                 OutputStreamWriter outputStreamWr = new OutputStreamWriter(connection.getOutputStream());
                 outputStreamWr.write(data);
                 outputStreamWr.flush();
-
                 br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 StringBuilder sb = new StringBuilder();
                 String line = null;
-
                 while((line = br.readLine())!=null) {
                     sb.append(line);
                     sb.append(System.getProperty("line.separator"));
                 }
-
                 content = sb.toString();
-
-
 
             } catch (MalformedURLException e) {
                 error = e.getMessage();
@@ -334,30 +287,27 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-
             progressDialog.dismiss();
 
             if(error!=null) {
                 // Set error if something happens!?
             } else {
                 try {
+                    //Store user info from database locally
                     JSONObject o = new JSONObject(content);
                     String fName = o.getString("firstName");
                     String lName = o.getString("lastName");
                     String id = o.getString("ID");
-
                     String fullName = fName + " " + lName;
 
                     Intent myIntent = new Intent(MainActivity.this, HomePage.class);
 
                     //Creating editor to store values to shared preferences
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-
                     //Adding values to editor
                     editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, true);
                     editor.putString(Config.NAME_SHARED_PREF, fullName);
                     editor.putString(Config.ID_SHARED_PREF, id);
-
                     //Saving values to editor
                     editor.commit();
 
@@ -373,8 +323,4 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
-
-
-
-
 }

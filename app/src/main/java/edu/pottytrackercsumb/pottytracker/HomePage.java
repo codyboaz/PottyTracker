@@ -24,22 +24,22 @@ import com.facebook.login.LoginManager;
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Initialize facebook SDK
         FacebookSdk.sdkInitialize(getApplicationContext());
 
-
+        //Initialize navigation drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -47,10 +47,10 @@ public class HomePage extends AppCompatActivity
         SharedPreferences sharedPreferences = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         String name = sharedPreferences.getString(Config.NAME_SHARED_PREF,"Not Available");
 
-
-        //Showing the current logged in email to textview
+        //Showing the current logged in name of user
         helloUser.setText("Hello " + name);
 
+        //find bathroom button
         Button find = (Button) findViewById(R.id.findBttn);
         find.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +60,7 @@ public class HomePage extends AppCompatActivity
             }
         });
 
+        //create bathroom button
         Button create = (Button) findViewById(R.id.createBttn);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +70,7 @@ public class HomePage extends AppCompatActivity
             }
         });
 
+        //your ratings button
         Button yourRate = (Button) findViewById(R.id.ratingBttn);
         yourRate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +79,6 @@ public class HomePage extends AppCompatActivity
                 startActivity(i);
             }
         });
-
-
     }
 
     @Override
@@ -141,16 +141,14 @@ public class HomePage extends AppCompatActivity
                             SharedPreferences preferences = getSharedPreferences(Config.SHARED_PREF_NAME,Context.MODE_PRIVATE);
                             //Getting editor
                             SharedPreferences.Editor editor = preferences.edit();
-
                             //Puting the value false for loggedin
                             editor.putBoolean(Config.LOGGEDIN_SHARED_PREF, false);
-
                             //Putting blank value to email
                             editor.putString(Config.NAME_SHARED_PREF, "");
-
                             //Saving the sharedpreferences
                             editor.commit();
 
+                            //Log user out of facebook
                             LoginManager.getInstance().logOut();
 
                             //Starting login activity
@@ -158,7 +156,6 @@ public class HomePage extends AppCompatActivity
                             startActivity(intent);
                         }
                     });
-
             alertDialogBuilder.setNegativeButton("No",
                     new DialogInterface.OnClickListener() {
                         @Override
@@ -166,14 +163,11 @@ public class HomePage extends AppCompatActivity
 
                         }
                     });
-
             //Showing the alert dialog
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
 
         }
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

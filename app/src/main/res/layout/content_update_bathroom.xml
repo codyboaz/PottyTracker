@@ -14,60 +14,60 @@
 
         <fragment
             android:layout_width="match_parent"
-            android:layout_height="375dp"
+            android:layout_height="@dimen/mapHeight"
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.MapFragment"
             android:layout_marginTop="75dp" />
 
 
         <EditText
-            android:layout_width="215dp"
+            android:layout_width="@dimen/mediumTextBoxWidth"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
             android:id="@+id/bathroomName"
-            android:hint="Bathroom Name"
+            android:hint=" Bathroom Name"
             android:layout_below="@+id/map"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/standardPadding"
             android:textColorHint="@color/Gray"
             android:background="@android:color/white"
-            android:minHeight="30dp"
-            android:layout_marginBottom="10dp"
+            android:minHeight="@dimen/mediumTextBoxHeight"
+            android:layout_marginBottom="@dimen/smallPadding"
             android:singleLine="true" />
         <EditText
-            android:layout_width="215dp"
+            android:layout_width="@dimen/mediumTextBoxWidth"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
             android:id="@+id/addressEditText"
-            android:hint="Street Address"
+            android:hint=" Street Address"
             android:layout_below="@+id/map"
             android:textColorHint="@color/Gray"
             android:background="@android:color/white"
-            android:layout_marginBottom="10dp"
-            android:minHeight="30dp" />
+            android:layout_marginBottom="@dimen/smallPadding"
+            android:minHeight="@dimen/mediumTextBoxHeight" />
         <EditText
-            android:layout_width="215dp"
+            android:layout_width="@dimen/mediumTextBoxWidth"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
             android:id="@+id/cityEditText"
-            android:hint="City"
+            android:hint=" City"
             android:textColorHint="@color/Gray"
             android:background="@android:color/white"
-            android:layout_marginBottom="10dp"
-            android:minHeight="30dp" />
+            android:layout_marginBottom="@dimen/smallPadding"
+            android:minHeight="@dimen/mediumTextBoxHeight" />
         <EditText
-            android:layout_width="215dp"
+            android:layout_width="@dimen/mediumTextBoxWidth"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
             android:id="@+id/stateEditText"
-            android:hint="State"
-            android:layout_marginBottom="20dp"
+            android:hint=" State"
+            android:layout_marginBottom="@dimen/smallPadding"
             android:textColorHint="@color/Gray"
             android:background="@android:color/white"
-            android:minHeight="30dp" />
+            android:minHeight="@dimen/mediumTextBoxHeight" />
 
         <Button
             android:layout_width="wrap_content"
@@ -75,9 +75,12 @@
             android:text="Create Bathroom"
             android:id="@+id/getAddressButton"
             android:onClick="showAddressMarker"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="@dimen/largePadding"
             android:background="@color/colorPrimary"
-            android:textColor="@color/GhostWhite"/>
+            android:textColor="@color/GhostWhite"
+            android:width="@dimen/medButtonWidth"
+            android:height="@dimen/medButtonHeight"
+            android:layout_marginTop="15dp" />
 
     </LinearLayout>
 </ScrollView>
